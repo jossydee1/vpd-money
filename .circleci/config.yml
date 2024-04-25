@@ -42,6 +42,16 @@ jobs:
       - run:
           name: Verify AWS CLI Path
           command: which aws
+
+      # Install kubectl
+      - run:
+          name: Install kubectl
+          command: |
+            sudo apt-get update && sudo apt-get install -y apt-transport-https
+            sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+            echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+            sudo apt-get update && sudo apt-get install -y kubectl
+
       # Configure AWS CLI
       - run:
           name: Configure AWS CLI
