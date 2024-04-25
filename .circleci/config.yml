@@ -43,15 +43,6 @@ jobs:
           name: Verify AWS CLI Path
           command: which aws
 
-      # Install kubectl
-      - run:
-          name: Install kubectl
-          command: |
-            sudo apt-get update && sudo apt-get install -y apt-transport-https
-            sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-            echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-            sudo apt-get update && sudo apt-get install -y kubectl
-
       # Configure AWS CLI
       - run:
           name: Configure AWS CLI
@@ -59,6 +50,16 @@ jobs:
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure set default.region us-east-1
+
+      # Install kubectl
+      - run:
+          name: Install kubectl
+          command: sudo curl --silent --location -o /usr/local/bin/kubectl "https://amazon-eks.s3.us-east-1.amazonaws.com/1.23.7/2022-01-31/bin/linux/amd64/kubectl" && sudo chmod +x /usr/local/bin/kubectl
+
+      # Verify kubectl version
+      - run:
+          name: Verify kubectl version
+          command: kubectl version --short --client
 
       # Authenticate with EKS Cluster
       - run:
