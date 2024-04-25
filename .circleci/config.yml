@@ -33,6 +33,18 @@ jobs:
     steps:
       - checkout
 
+      # Install kubectl
+      - run:
+          name: Install kubectl
+          command: |
+            sudo curl --silent --location -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl --location --silent https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+            sudo chmod +x /usr/local/bin/kubectl
+
+      # Verify kubectl version
+      - run:
+          name: Verify kubectl version
+          command: kubectl version --short --client
+
       # Install AWS CLI
       - run:
           name: Install AWS CLI
@@ -51,15 +63,15 @@ jobs:
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure set default.region us-east-1
 
-      # Install kubectl
-      - run:
-          name: Install kubectl
-          command: sudo curl --silent --location -o /usr/local/bin/kubectl "https://amazon-eks.s3.us-east-1.amazonaws.com/1.23.7/2022-01-31/bin/linux/amd64/kubectl" && sudo chmod +x /usr/local/bin/kubectl
+      # # Install kubectl
+      # - run:
+      #     name: Install kubectl
+      #     command: sudo curl --silent --location -o /usr/local/bin/kubectl "https://amazon-eks.s3.us-east-1.amazonaws.com/1.23.7/2022-01-31/bin/linux/amd64/kubectl" && sudo chmod +x /usr/local/bin/kubectl
 
-        # Verify kubectl installation
-      - run:
-          name: Verify kubectl installation
-          command: ls -l /usr/local/bin/kubectl
+      #   # Verify kubectl installation
+      # - run:
+      #     name: Verify kubectl installation
+      #     command: ls -l /usr/local/bin/kubectl
 
       # # Verify kubectl version
       # - run:
