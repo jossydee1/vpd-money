@@ -1,4 +1,5 @@
 // app.test.js
+import App from "../src/App.js";
 
 const app = require("./App"); // Import your main application file
 
