@@ -59,8 +59,8 @@ jobs:
       - run:
           name: Deploy to EKS Cluster
           command: |
-            kubectl apply -f deployment.yaml
-            kubectl apply -f service.yaml
+            kubectl apply -f ../deployment.yaml
+            kubectl apply -f ../service.yaml
 
 workflows:
   GitOpsflow:
