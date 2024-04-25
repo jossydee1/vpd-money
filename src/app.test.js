@@ -1,18 +1,13 @@
-// app.test.js
-import App from "../src/App.js";
+// Header.test.js
 
-const app = require("./App"); // Import your main application file
+import React from "react";
+import { render } from "@testing-library/react";
+import Header from "./Components/Header";
 
-describe("App", () => {
-	it('should return "Hello, world!" when calling the helloWorld() function', () => {
-		const result = App.Body();
-		expect(result).toBe("Hello, world!");
+describe("Header", () => {
+	it("should render the header with the correct name", () => {
+		const { getByText } = render(<Header />);
+		const headerElement = getByText("Meme Generator");
+		expect(headerElement).toBeInTheDocument();
 	});
-
-	it("should add two numbers correctly", () => {
-		const result = App.addNumbers(2, 3);
-		expect(result).toBe(5);
-	});
-
-	// Add more test cases as needed
 });
