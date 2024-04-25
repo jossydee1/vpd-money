@@ -2,7 +2,7 @@
 
 import React from "react";
 import { render } from "@testing-library/react";
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 
 describe("Header", () => {
 	it("should render the header with the correct name", () => {
