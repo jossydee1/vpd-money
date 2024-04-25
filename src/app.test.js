@@ -1,6 +1,6 @@
 // app.test.js
 
-const app = require("./app"); // Import your main application file
+const app = require("./App"); // Import your main application file
 
 describe("App", () => {
 	it('should return "Hello, world!" when calling the helloWorld() function', () => {
