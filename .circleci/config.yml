@@ -12,9 +12,9 @@ jobs:
           command: |
             version="build-$CIRCLE_BUILD_NUM"
             echo $version
-            docker build -t jossydee1/nodeApp:$version .
+            docker build -t jossydee1/node-app-vpd:$version .
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker push jossydee1/nodeApp:$version
+            docker push jossydee1/node-app-vpd:$version
 
   test:
     docker:
