@@ -38,7 +38,6 @@ jobs:
           name: Install AWS CLI
           command: |
             sudo apt-get update && sudo apt-get install -y awscli
-
       # Verify AWS CLI Path
       - run:
           name: Verify AWS CLI Path
