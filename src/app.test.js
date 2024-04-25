@@ -7,7 +7,7 @@ import Header from "./Components/Header/Header";
 describe("Header", () => {
 	it("should render the header with the correct name", () => {
 		const { getByText } = render(<Header />);
-		const headerElement = getByText("Meme Generator");
+		const headerElement = getByText("Meme Generatord");
 		// expect(headerElement).toBeInTheDocument();
 	});
 });
