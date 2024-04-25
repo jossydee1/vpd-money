@@ -5,7 +5,7 @@ const app = require("./App"); // Import your main application file
 
 describe("App", () => {
 	it('should return "Hello, world!" when calling the helloWorld() function', () => {
-		const result = App.helloWorld();
+		const result = App.Body();
 		expect(result).toBe("Hello, world!");
 	});
 
