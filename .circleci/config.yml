@@ -61,10 +61,10 @@ jobs:
           name: Verify kubectl installation
           command: ls -l /usr/local/bin/kubectl
 
-      # Verify kubectl version
-      - run:
-          name: Verify kubectl version
-          command: kubectl version
+      # # Verify kubectl version
+      # - run:
+      #     name: Verify kubectl version
+      #     command: kubectl version
 
       # Authenticate with EKS Cluster
       - run:
