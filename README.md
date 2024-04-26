@@ -1,6 +1,6 @@
 This is a Nodejs App code
 
-There are three parts to this project:
+There are separate parts to this project:
 
 The App repo url:
 https://github.com/jossydee1/vpd-money
