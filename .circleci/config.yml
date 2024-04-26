@@ -26,43 +26,6 @@ jobs:
       #  Run unit tests
       - run: npm test
 
-  # deploy_to_eks:
-  #   docker:
-  #     - image: cimg/node:20.3.1
-
-  #   steps:
-  #     - checkout
-
-  #     # Install kubectl
-  #     - run:
-  #         name: Install kubectl
-  #         command: |
-  #           sudo curl --silent --location -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl --location --silent https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-  #           sudo chmod +x /usr/local/bin/kubectl
-
-  #     # Verify kubectl version
-  #     - run:
-  #         name: Verify kubectl version
-  #         command: kubectl version --short --client
-
-  #     # Install AWS CLI
-  #     - run:
-  #         name: Install AWS CLI
-  #         command: |
-  #           sudo apt-get update && sudo apt-get install -y awscli
-  #     # Verify AWS CLI Path
-  #     - run:
-  #         name: Verify AWS CLI Path
-  #         command: which aws
-
-  #     # Configure AWS CLI
-  #     - run:
-  #         name: Configure AWS CLI
-  #         command: |
-  #           aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-  #           aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-  #           aws configure set default.region us-east-1
-
   Update_manifest:
     docker:
       - image: cimg/base:2023.06
@@ -87,33 +50,6 @@ jobs:
             git commit -m "new build with imgTag build-$TAG"
             git config credential.helper 'cache --timeout=120'
             git push -q https://$GITHUB_PERSONAL_TOKEN@github.com/jossydee1/vpd-money_Kube_manifest.git main
-
-      # # Install kubectl
-      # - run:
-      #     name: Install kubectl
-      #     command: sudo curl --silent --location -o /usr/local/bin/kubectl "https://amazon-eks.s3.us-east-1.amazonaws.com/1.23.7/2022-01-31/bin/linux/amd64/kubectl" && sudo chmod +x /usr/local/bin/kubectl
-
-      #   # Verify kubectl installation
-      # - run:
-      #     name: Verify kubectl installation
-      #     command: ls -l /usr/local/bin/kubectl
-
-      # # Verify kubectl version
-      # - run:
-      #     name: Verify kubectl version
-      #     command: kubectl version
-
-      # Authenticate with EKS Cluster
-      # - run:
-      #     name: Authenticate with EKS Cluster
-      #     command: |
-      #       aws eks --region us-east-1 update-kubeconfig --name NodeApp
-      # # Deploy to EKS Cluster
-      # - run:
-      #     name: Deploy to EKS Cluster
-      #     command: |
-      #       kubectl apply -f ../deployment.yaml
-      #       kubectl apply -f ../service.yaml
 
 workflows:
   GitOpsflow:
