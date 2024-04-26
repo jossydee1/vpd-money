@@ -23,7 +23,7 @@ jobs:
       - checkout
       # Install dependencies
       - run: npm install
-      #  Run unit test
+      #  Run unit tests
       - run: npm test
 
   # deploy_to_eks:
